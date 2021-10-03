@@ -15,3 +15,11 @@ From https://kafka.apache.org/documentation/#design_replicamanagment
 
     It is also important to optimize the leadership election process as that is the critical window of unavailability. A naive implementation of leader election would end up running an election per partition for all partitions a node hosted when that node failed. Instead, we elect one of the brokers as the "controller". This controller detects failures at the broker level and is responsible for changing the leader of all affected partitions in a failed broker. The result is that we are able to batch together many of the required leadership change notifications which makes the election process far cheaper and faster for a large number of partitions. If the controller fails, one of the surviving brokers will become the new controller.
 
+Image result for group id in kafka
+Image result for group id in kafka
+Image result for group id in kafka
+View all
+group.id specifies the name of the consumer group a Kafka consumer belongs to. When the Kafka consumer is constructed and group.id does not exist yet (i.e. there are no existing consumers that are part of the group), the consumer group will be created automatically.
+
+
+https://gist.github.com/bansalankit92/9414ef3614229cdca6053464fedf5038
